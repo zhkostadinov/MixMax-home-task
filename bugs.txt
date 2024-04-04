@@ -1,0 +1,24 @@
+Bugs found during the tets implementation.
+
+
+Affected API's:
+
+API url: https://petstore.swagger.io/#/user
+
+
+1. Update not logged Person username.
+2. Field validation.
+
+Test suite covering topic 1 is located here:
+    tests/api/update.not.logged.person.spec.ts
+        - should response with status code 200 when update person username
+
+Test suite covering topic 2 is located here:
+    tests/api/add.person.spec
+      
+Brakedown topic 1:
+   On my opinion, the username should not be changed anyhow. It must be unique for the user.
+   The actual behavior is, when we update the username, the service creates a replica of the already existing user with the same ID and other fields. 
+   The difference is in the username.
+Brakedown topic 2:
+   Field validation is missing. We can update phone number to be negative number for example

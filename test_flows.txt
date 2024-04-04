@@ -1,0 +1,23 @@
+
+Tests sending proper information, invalid information, incorrect format and other possible edge cases.
+
+Web test flows:
+– Successful login with valid credentials.
+– Login with a valid username and case-insensitive password.
+– Successful login with a remembered username and password fields.
+– Successful login after password reset.
+– Login with a valid username and password within specified character limits.
+– Successful login with special characters in the password.
+– Unsuccessful login with an invalid username and password.
+– Login with a blank username and password.Unsuccessful login with an expired account.
+– Login attempt with an account locked due to multiple unsuccessful tries.
+– Login with a valid username and an incorrect case-sensitive password.
+– Unsuccessful login with an account under review or pending approval.
+– Login attempt with a deactivated or terminated user account.
+
+Api test flows:
+- Create – INSERT an entry in the Database.
+- Read or Retrieve – SELECT the entry from the Database and View it.
+- Update – UPDATE the entry completely or partially.
+- Delete or Destroy – DROP/DELETE the entry.
+

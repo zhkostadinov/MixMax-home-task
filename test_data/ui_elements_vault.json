@@ -1,0 +1,12 @@
+{
+    "login_page": {
+        "sign_in_link": "//a[text()=\"Sign In\"]",
+        "username_input": "//input[@name=\"username\"]",
+        "password_input": "//input[@name=\"password\"]",
+        "log_in_btn": "//input[@name=\"signon\"]"
+    },
+    "dashboard_page": {
+        "sign_out_link": "//a[text()=\"Sign Out\"]",
+        "my_account_link": "//a[text()=\"My Account\"]"
+    }
+}
