@@ -34,6 +34,7 @@ Retry - retrying a certain number of times when a call to the app fails.
 
 - [Playwright](https://playwright.dev/) to enable Web and Api tests
 - [dotenv](https://www.npmjs.com/package/dotenv) that loads environment variables are to be injected in the configs
+- [nvm](https://github.com/nvm-sh/nvm) node version manager
 
 ### Project structure breakdown 
 
@@ -57,9 +58,9 @@ Retry - retrying a certain number of times when a call to the app fails.
 
 ## Development
 
-`npm v6.14.7`
+`npm v10.5.0`
 
-`node v14.21.0`
+`node v20.12.1`
 
 ### CI/CD Running Tests
 1. Add all listed env vars from `.env.test` in the environment. Depends on the runner, it will be one time operation.
