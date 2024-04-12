@@ -8,23 +8,23 @@ let ui_elements, browserAction, pageAction, elementAction;
 
 test.describe("Dashboard tests @web", ()=> {
 
-    test.beforeEach(async({page}, testInfo)=> {
+    test.beforeEach(async({ page })=> {
         ui_elements = await load_test_data('ui_elements_vault');
 
         browserAction = new BrowserAction(page);
         pageAction = new PageAction(page);
         elementAction = new ElementAction(page);
-        await browserAction.navigate_to_url(testInfo.config.projects.filter(p => p.name == 'WEB')[0].use.baseURL);
+        await browserAction.navigate_to_url();
     });
 
-    test.afterEach(async({page})=> {
+    test.afterEach(async({ page })=> {
         await page.close();
     });
 
-    test(`should land on dashboard page`, async ({}) => {
+    test(`should land on dashboard page`, async ({ baseURL }) => {
         const current_url = await browserAction.get_current_page_url();
 
-        expect(current_url).toBe("https://petstore.octoperf.com/actions/Catalog.action");
+        expect(current_url).toBe(baseURL);
     });
 
     test(`should login sucessfully`, async ({}) => {

@@ -7,7 +7,11 @@ exports.BrowserAction = class BrowserPage{
     }
 
     async navigate_to_url(url) {
-        await this.page.goto(url);
+        if (url) {
+            await this.page.goto(url);
+        } else {
+            await this.page.goto('');
+        }
     }
 
     async get_current_page_url(){

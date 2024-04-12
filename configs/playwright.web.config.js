@@ -11,35 +11,21 @@ module.exports = defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 3 : 0,
   workers: process.env.CI ? 1 : undefined,
-  testDir: './tests',
+  testDir: '../tests',
   reporter: 'html',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     actionTimeout: 90000,
     launchOptions: {
       args: ["--start-maximized"],
     },
+    baseURL : process.env.WEB_URL || 'https://petstore.octoperf.com/actions/Catalog.action'
   },
-
-  /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
       use: {viewport: undefined}
     },
-    {
-      name: 'WEB',
-      use: {
-        baseURL: 'https://petstore.octoperf.com/actions/Catalog.action'
-      }
-    },
-    {
-      name: 'API',
-      use: {
-        baseURL: 'https://petstore.swagger.io/v2'
-      }
-    }
   ]
 });

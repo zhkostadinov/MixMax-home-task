@@ -2,10 +2,9 @@ const { expect, test } = require('@playwright/test');
 const { load_model } = require("../../utils/data_loader");
 import { faker } from '@faker-js/faker/locale/en';
 
-let baseURL, add_person_model;
+let add_person_model;
 
-test.beforeEach( async({}, testInfo )=> {
-    baseURL = testInfo.config.projects.filter(p => p.name == 'API')[0].use.baseURL;
+test.beforeEach( async( {} )=> {
     add_person_model = await load_model('api_add_person');
     add_person_model.username = faker.internet.userName();
     add_person_model.firstName = faker.person.firstName();
@@ -18,7 +17,7 @@ test.beforeEach( async({}, testInfo )=> {
 
 test.describe('API add person tests @api', () => {
     test('should response with status code 200 when add new person @api', async ({ request }) => {
-        const postPersonRequest = await request.post(`${baseURL}/user`, { data: add_person_model} );
+        const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();
 
         expect(postPersonRequest).toBeOK();
@@ -26,65 +25,65 @@ test.describe('API add person tests @api', () => {
     });
     
     test('should not add person without username', async ({ request }) => {
-        add_person_model.username = "";
-        const postPersonRequest = await request.post(`${baseURL}/user`, { data: add_person_model} );
+        add_person_model.username = '';
+        const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();
 
         expect(postPersonRequest).toBeOK();
-        expect(responsePostRequest.message).toBeFalsy();
+        expect(responsePostRequest.message).toBe('');
     });
 
     test('should not add new person without firstName', async ({ request }) => {
-        add_person_model.firstName = "";
-        const postPersonRequest = await request.post(`${baseURL}/user`, { data: add_person_model} );
+        add_person_model.firstName = '';
+        const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();
 
         expect(postPersonRequest).toBeOK();
-        expect(responsePostRequest.message).toBeFalsy();
+        expect(responsePostRequest.message).toBe('');
     });
 
     test('should not add new person without lastName', async ({ request }) => {
-        add_person_model.lastName = "";
-        const postPersonRequest = await request.post(`${baseURL}/user`, { data: add_person_model} );
+        add_person_model.lastName = '';
+        const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();
 
         expect(postPersonRequest).toBeOK();
-        expect(responsePostRequest.message).toBeFalsy();
+        expect(responsePostRequest.message).toBe('');
     });
 
     test('should not add new person without email', async ({ request }) => {
-        add_person_model.email = "";
-        const postPersonRequest = await request.post(`${baseURL}/user`, { data: add_person_model} );
+        add_person_model.email = '';
+        const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();
 
         expect(postPersonRequest).toBeOK();
-        expect(responsePostRequest.message).toBeFalsy();
+        expect(responsePostRequest.message).toBe('');
     });
 
     test('should not add new person without password', async ({ request }) => {
-        add_person_model.password = "";
-        const postPersonRequest = await request.post(`${baseURL}/user`, { data: add_person_model} );
+        add_person_model.password = '';
+        const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();
 
         expect(postPersonRequest).toBeOK();
-        expect(responsePostRequest.message).toBeFalsy();
+        expect(responsePostRequest.message).toBe('');
     });
 
     test('should not add new person without phone', async ({ request }) => {
-        add_person_model.phone = "";
-        const postPersonRequest = await request.post(`${baseURL}/user`, { data: add_person_model} );
+        add_person_model.phone = '';
+        const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();
 
         expect(postPersonRequest).toBeOK();
-        expect(responsePostRequest.message).toBeFalsy();
+        expect(responsePostRequest.message).toBe('');
     });
 
     test('should not add new person when phone number is negative', async ({ request }) => {
         add_person_model.phone = -1234556789;
-        const postPersonRequest = await request.post(`${baseURL}/user`, { data: add_person_model} );
+        const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();
 
         expect(postPersonRequest).toBeOK();
-        expect(responsePostRequest.message).toBeFalsy();
+        expect(responsePostRequest.message).toBe('');
     });
 })

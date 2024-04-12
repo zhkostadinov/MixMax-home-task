@@ -11,8 +11,8 @@
     "@types/node": "^20.10.5"
   },
   "scripts": {
-    "tests:api": "npx playwright test --config=playwright.config.js --workers=1 --retries=2 --grep @api --project=API --reporter=line",
-    "tests:web": "npx playwright test --config=playwright.config.js --workers=1 --retries=2 --grep @web --project=WEB --reporter=line",
+    "tests:api": "npx playwright test --config=/configs/playwright.api.config.js --workers=1 --retries=2 --grep @api --reporter=line",
+    "tests:web": "npx playwright test --config=/configs/playwright.web.config.js --workers=1 --retries=2 --grep @web --reporter=line",
     "tests:it": "npx playwright test --ui"
   }
 }

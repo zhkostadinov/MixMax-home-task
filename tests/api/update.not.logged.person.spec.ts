@@ -2,10 +2,9 @@ const { expect, test } = require('@playwright/test');
 const { load_model } = require("../../utils/data_loader");
 import { faker } from '@faker-js/faker/locale/en';
 
-let baseURL, add_person_model, post_person_request;
+let add_person_model;
 
-test.beforeEach( async({ request }, testInfo )=> {
-    baseURL = testInfo.config.projects.filter(p => p.name == 'API')[0].use.baseURL;
+test.beforeEach( async({ request })=> {
     add_person_model = await load_model('api_add_person');
     add_person_model.username = faker.internet.userName();
     add_person_model.firstName = faker.person.firstName();
@@ -14,7 +13,7 @@ test.beforeEach( async({ request }, testInfo )=> {
     add_person_model.password = faker.internet.password();
     add_person_model.phone = faker.phone.imei();
 
-    post_person_request = await request.post(`${baseURL}/user`, { data: add_person_model } );
+    await request.post(`user`, { data: add_person_model } );
 });
 
 test.describe('API update not logged person tests @api', () => {
@@ -22,11 +21,11 @@ test.describe('API update not logged person tests @api', () => {
         const original_username = add_person_model.username; 
         add_person_model.username = faker.internet.userName();
 
-        await request.put(`${baseURL}/user/${original_username}`, { data: add_person_model});
-        const get_original_person_request = await request.get(`${baseURL}/user/${original_username}`);
+        await request.put(`user/${original_username}`, { data: add_person_model});
+        const get_original_person_request = await request.get(`user/${original_username}`);
         const original_person = await get_original_person_request.json();
 
-        const get_updated_person_request = await request.get(`${baseURL}/user/${add_person_model.username}`);
+        const get_updated_person_request = await request.get(`user/${add_person_model.username}`);
         const updated_person = await get_updated_person_request.json();    
 
 
@@ -38,8 +37,8 @@ test.describe('API update not logged person tests @api', () => {
         const original_first_name = add_person_model.firstName; 
         add_person_model.firstName = faker.person.firstName();
 
-        await request.put(`${baseURL}/user/${add_person_model.username}`, { data: add_person_model});
-        const get_updated_person_request = await request.get(`${baseURL}/user/${add_person_model.username}`);
+        await request.put(`user/${add_person_model.username}`, { data: add_person_model});
+        const get_updated_person_request = await request.get(`user/${add_person_model.username}`);
         const updated_person = await get_updated_person_request.json();
 
         expect(get_updated_person_request).toBeOK();
@@ -50,8 +49,8 @@ test.describe('API update not logged person tests @api', () => {
         const original_last_name = add_person_model.lastName; 
         add_person_model.lastName = faker.person.lastName();
 
-        await request.put(`${baseURL}/user/${add_person_model.username}`, { data: add_person_model});
-        const get_updated_person_request = await request.get(`${baseURL}/user/${add_person_model.username}`);
+        await request.put(`user/${add_person_model.username}`, { data: add_person_model});
+        const get_updated_person_request = await request.get(`user/${add_person_model.username}`);
         const updated_person = await get_updated_person_request.json();
 
         expect(get_updated_person_request).toBeOK();
@@ -62,8 +61,8 @@ test.describe('API update not logged person tests @api', () => {
         const original_person_email = add_person_model.email;
         add_person_model.email = faker.internet.email();
 
-        await request.put(`${baseURL}/user/${add_person_model.username}`, { data: add_person_model});
-        const get_updated_person_request = await request.get(`${baseURL}/user/${add_person_model.username}`);
+        await request.put(`user/${add_person_model.username}`, { data: add_person_model});
+        const get_updated_person_request = await request.get(`user/${add_person_model.username}`);
         const updated_person = await get_updated_person_request.json();
 
         expect(get_updated_person_request).toBeOK();
@@ -74,8 +73,8 @@ test.describe('API update not logged person tests @api', () => {
         const original_person_password = add_person_model.password;
         add_person_model.password = faker.internet.password();
 
-        await request.put(`${baseURL}/user/${add_person_model.username}`, { data: add_person_model});
-        const get_updated_person_request = await request.get(`${baseURL}/user/${add_person_model.username}`);
+        await request.put(`user/${add_person_model.username}`, { data: add_person_model});
+        const get_updated_person_request = await request.get(`user/${add_person_model.username}`);
         const updated_person = await get_updated_person_request.json();
 
         expect(get_updated_person_request).toBeOK();
@@ -86,8 +85,8 @@ test.describe('API update not logged person tests @api', () => {
         const original_person_phone = add_person_model.phone;
         add_person_model.phone = faker.phone.imei();
 
-        await request.put(`${baseURL}/user/${add_person_model.username}`, { data: add_person_model});
-        const get_updated_person_request = await request.get(`${baseURL}/user/${add_person_model.username}`);
+        await request.put(`user/${add_person_model.username}`, { data: add_person_model});
+        const get_updated_person_request = await request.get(`user/${add_person_model.username}`);
         const updated_person = await get_updated_person_request.json();
 
         expect(get_updated_person_request).toBeOK();
