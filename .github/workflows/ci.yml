@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Cache node modules
       id: cache-npm
-      uses: actions/cache@v4
+      uses: actions/cache@v3
       env:
           cache-name: cache-node-modules
       with:
@@ -35,7 +35,7 @@ jobs:
     #       ~/.cache/ms-playwright
     #     key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
     - name: Cache playwright binaries
-      uses: actions/cache@v4
+      uses: actions/cache@v3
       id: playwright-cache
       with:
         path: |
@@ -53,7 +53,7 @@ jobs:
     # - name: Install dependencies with npm
     #   run: npm i --save-dev
     - name: Run Playwright API tests
-      run: ll
+      run: ls
     # - name: Run Playwright API tests
     #   run: npm run tests:api
     # - name: Run Playwright WEB tests
