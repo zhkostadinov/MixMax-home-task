@@ -27,13 +27,6 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-  
-    # - name: Cache playwright binaries
-    #   uses: actions/cache@v4
-    #   id: playwright-cache
-    #   with:
-    #     path: |
-    #       ~/.cache/ms-playwright
-    #     key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
     - name: Cache playwright binaries
       uses: actions/cache@v3
       id: playwright-cache
@@ -45,16 +38,9 @@ jobs:
     - run: npx playwright install --with-deps
       if: steps.playwright-cache.outputs.cache-hit != 'true'
     - run: npx playwright install-deps
-      if: steps.playwright-cache.outputs.cache-hit != 'true'    
-    # - name: Install dependencies
-    #   run: npm i --save-dev
-    # - name: Install Playwright Browsers
-    #   run: npx playwright install --with-deps
-    # - name: Install dependencies with npm
-    #   run: npm i --save-dev
-    # - name: Run Playwright API tests
-    #   run: ls
-    # - name: Run Playwright API tests
-    #   run: npm run tests:api
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
+    - name: Run Playwright API tests
+      continue-on-error: true
+      run: npm run tests:api
     - name: Run Playwright WEB tests
       run: npm run tests:web  
