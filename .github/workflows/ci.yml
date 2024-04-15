@@ -26,11 +26,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
-            ${{ runner.os }}-
-    # - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-    #   name: List the state of node modules
-    #   continue-on-error: true
-    #   run: npm list    
+            ${{ runner.os }}-  
     - name: Cache playwright binaries
       uses: actions/cache@v4
       id: playwright-cache
@@ -38,12 +34,12 @@ jobs:
         path: |
           ~/.cache/ms-playwright
         key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}    
-    # - name: Install dependencies
-    #   run: npm ci
+    - name: Install dependencies
+      run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Install dependencies with npm
-      run: npm i --save-dev      
+    # - name: Install dependencies with npm
+    #   run: npm i --save-dev      
     - name: Run Playwright API tests
       run: npm run tests:api
     - name: Run Playwright WEB tests
