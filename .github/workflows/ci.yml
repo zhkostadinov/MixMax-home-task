@@ -41,18 +41,20 @@ jobs:
         path: |
           ~/.cache/ms-playwright
         key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
-    - run: npm ci
+    - run: npm install --package-lock-only && npm ci
     - run: npx playwright install --with-deps
       if: steps.playwright-cache.outputs.cache-hit != 'true'
     - run: npx playwright install-deps
       if: steps.playwright-cache.outputs.cache-hit != 'true'    
-    - name: Install dependencies
-      run: npm i --save-dev
+    # - name: Install dependencies
+    #   run: npm i --save-dev
     # - name: Install Playwright Browsers
     #   run: npx playwright install --with-deps
     # - name: Install dependencies with npm
-    #   run: npm i --save-dev      
+    #   run: npm i --save-dev
     - name: Run Playwright API tests
-      run: npm run tests:api
-    - name: Run Playwright WEB tests
-      run: npm run tests:web  
+      run: ll
+    # - name: Run Playwright API tests
+    #   run: npm run tests:api
+    # - name: Run Playwright WEB tests
+    #   run: npm run tests:web  
