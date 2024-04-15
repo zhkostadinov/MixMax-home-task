@@ -56,5 +56,5 @@ jobs:
     #   run: ls
     - name: Run Playwright API tests
       run: npm run tests:api
-    # - name: Run Playwright WEB tests
-    #   run: npm run tests:web  
+    - name: Run Playwright WEB tests
+      run: npm run tests:web  
