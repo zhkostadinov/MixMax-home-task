@@ -15,6 +15,7 @@ jobs:
         node-version: 20
     - name: Set env vars
       run: |
+        > .env.vault
         echo STATIC_EMAIL=${{ vars.STATIC_EMAIL }} >> .env.vault
         echo STATIC_PASSWORD=${{ vars.STATIC_PASSWORD }} >> .env.vault       
         echo STATIC_USERNAME=${{ vars.STATIC_USERNAME }} >> .env.vault      
