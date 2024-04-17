@@ -1,12 +1,12 @@
 {
     "login_page": {
-        "sign_in_link": "//a[text()=\"Sign In\"]",
-        "username_input": "//input[@name=\"username\"]",
-        "password_input": "//input[@name=\"password\"]",
-        "log_in_btn": "//input[@name=\"signon\"]"
+        "sign_in_link": "//a[text()=\" Signup / Login\"]",
+        "email_input": "//form[@action=\"/login\"]//input[@name=\"email\"]",
+        "password_input": "//form[@action=\"/login\"]//input[@name=\"password\"]",
+        "login_btn": "//button[text()=\"Login\"]"
     },
     "dashboard_page": {
-        "sign_out_link": "//a[text()=\"Sign Out\"]",
-        "my_account_link": "//a[text()=\"My Account\"]"
+        "logout_btn": "//a[text()=\" Logout\"]",
+        "delete_my_account_btn": "//a[text()=\" Delete Account\"]"
     }
 }

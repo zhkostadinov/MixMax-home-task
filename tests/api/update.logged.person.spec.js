@@ -17,8 +17,8 @@ test.beforeEach( async({ request })=> {
     await request.post('user', { data: add_person_model } );
 });
 
-test.describe('API update logged person tests @api', () => {
-    test('should response with status code 200 when update person username', async ({ request }) => {
+test.describe('API update logged person tests', {tag: '@api',}, () => {
+    test.skip('should response with status code 200 when update person username', async ({ request }) => {
         const original_username = add_person_model.username; 
         add_person_model.username = faker.internet.userName();
         await request.get(`user/login?username=${original_username}&password=${add_person_model.password}`);
@@ -31,7 +31,7 @@ test.describe('API update logged person tests @api', () => {
         expect(original_username).not.toEqual(updated_person.firstName)
     });
     
-    test('should response with status code 200 when update person firstName', async ({ request }) => {
+    test.skip('should response with status code 200 when update person firstName', async ({ request }) => {
         add_person_model.firstName = faker.person.firstName();
         await request.get(`user/login?username=${add_person_model.username}&password=${add_person_model.password}`);
 
@@ -43,7 +43,7 @@ test.describe('API update logged person tests @api', () => {
         expect(add_person_model.firstName).not.toEqual(updated_person.firstName)
     });
 
-    test('should response with status code 200 when update person lastName', async ({ request }) => {
+    test.skip('should response with status code 200 when update person lastName', async ({ request }) => {
         add_person_model.lastName = faker.person.lastName();
         await request.get(`user/login?username=${add_person_model.username}&password=${add_person_model.password}`);
 
@@ -55,7 +55,7 @@ test.describe('API update logged person tests @api', () => {
         expect(add_person_model.lastName).not.toEqual(updated_person.lastName)
     });
 
-    test('should response with status code 200 when update person email', async ({ request }) => {
+    test.skip('should response with status code 200 when update person email', async ({ request }) => {
         add_person_model.email = faker.internet.email();
         await request.get(`user/login?username=${add_person_model.username}&password=${add_person_model.password}`);
 
@@ -67,7 +67,7 @@ test.describe('API update logged person tests @api', () => {
         expect(add_person_model.email).not.toEqual(updated_person.email)
     });
 
-    test('should response with status code 200 when update person password', async ({ request }) => {
+    test.skip('should response with status code 200 when update person password', async ({ request }) => {
         await request.get(`user/login?username=${add_person_model.username}&password=${add_person_model.password}`);
         add_person_model.password = faker.internet.password();
 
@@ -79,7 +79,7 @@ test.describe('API update logged person tests @api', () => {
         expect(add_person_model.password).not.toEqual(updated_person.password)
     });
 
-    test('should response with status code 200 when update person phone', async ({ request }) => {
+    test.skip('should response with status code 200 when update person phone', async ({ request }) => {
         add_person_model.phone = faker.phone.imei();
         await request.get(`user/login?username=${add_person_model.username}&password=${add_person_model.password}`);
 

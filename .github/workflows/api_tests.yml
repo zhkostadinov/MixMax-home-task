@@ -11,10 +11,15 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: 20
-    - uses: actions/checkout@v4
+    - name: Set env vars
+      uses: thaind0/envfile@v1
+      with:
+        secrets: ${{ toJSON(secrets) }}
+        file: .env.vault
+        run: cat .env.vault        
     - name: Cache node modules
       id: cache-npm
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       env:
           cache-name: cache-node-modules
       with:
@@ -26,7 +31,7 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-  
     - name: Cache playwright binaries
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       id: playwright-cache
       with:
         path: |

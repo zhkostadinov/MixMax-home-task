@@ -15,4 +15,13 @@ exports.ElementAction = class ElementAction{
         await this.page.waitForSelector(locator, { state: 'attached' });
         return await this.page.locator(locator).textContent();
     }
+
+    async click(locator) {
+        await this.page.waitForSelector(locator);
+        await this.page.click(locator); 
+    }
+
+    async click_by_visible_text(text) {
+        await this.page.getByText(text).click();
+    }
 }

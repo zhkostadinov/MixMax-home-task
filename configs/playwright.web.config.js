@@ -1,6 +1,6 @@
 // @ts-check
 const { defineConfig } = require('@playwright/test');
-require('dotenv').config({ path: './.env.test' });
+require('dotenv').config({ path: '../.env.vault' });
 
 module.exports = defineConfig({
   timeout: 6 * 60 * 1000,
@@ -14,13 +14,13 @@ module.exports = defineConfig({
   testDir: '../tests',
   reporter: 'html',
   use: {
-    trace: 'retain-on-failure',
+    trace: 'off',
     screenshot: 'only-on-failure',
     actionTimeout: 90000,
     launchOptions: {
       args: ["--start-maximized"],
     },
-    baseURL : process.env.WEB_URL || 'https://petstore.octoperf.com/actions/Catalog.action'
+    baseURL : process.env.WEB_URL || 'https://automationexercise.com/'
   },
   projects: [
     {

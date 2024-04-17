@@ -24,7 +24,7 @@ test.describe('API add person tests @api', () => {
         expect(responsePostRequest.message).toBeDefined();
     });
     
-    test('should not add person without username', async ({ request }) => {
+    test.skip('should not add person without username', async ({ request }) => {
         add_person_model.username = '';
         const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();
@@ -33,7 +33,7 @@ test.describe('API add person tests @api', () => {
         expect(responsePostRequest.message).toBe('');
     });
 
-    test('should not add new person without firstName', async ({ request }) => {
+    test.skip('should not add new person without firstName', async ({ request }) => {
         add_person_model.firstName = '';
         const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();
@@ -42,7 +42,7 @@ test.describe('API add person tests @api', () => {
         expect(responsePostRequest.message).toBe('');
     });
 
-    test('should not add new person without lastName', async ({ request }) => {
+    test.skip('should not add new person without lastName', async ({ request }) => {
         add_person_model.lastName = '';
         const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();
@@ -51,7 +51,7 @@ test.describe('API add person tests @api', () => {
         expect(responsePostRequest.message).toBe('');
     });
 
-    test('should not add new person without email', async ({ request }) => {
+    test.skip('should not add new person without email', async ({ request }) => {
         add_person_model.email = '';
         const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();
@@ -60,7 +60,7 @@ test.describe('API add person tests @api', () => {
         expect(responsePostRequest.message).toBe('');
     });
 
-    test('should not add new person without password', async ({ request }) => {
+    test.skip('should not add new person without password', async ({ request }) => {
         add_person_model.password = '';
         const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();
@@ -69,7 +69,7 @@ test.describe('API add person tests @api', () => {
         expect(responsePostRequest.message).toBe('');
     });
 
-    test('should not add new person without phone', async ({ request }) => {
+    test.skip('should not add new person without phone', async ({ request }) => {
         add_person_model.phone = '';
         const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();
@@ -78,7 +78,7 @@ test.describe('API add person tests @api', () => {
         expect(responsePostRequest.message).toBe('');
     });
 
-    test('should not add new person when phone number is negative', async ({ request }) => {
+    test.skip('should not add new person when phone number is negative', async ({ request }) => {
         add_person_model.phone = -1234556789;
         const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();

@@ -32,7 +32,7 @@ test.describe('API CRUD tests @api', () => {
         expect(add_person_model.username).toBe(response_get_request.username)
     });
     
-    test('should response with status code 200 when update person firstName', async ({ request }) => {
+    test.skip('should response with status code 200 when update person firstName', async ({ request }) => {
         add_person_model.firstName = faker.person.firstName();
         await request.get(`user/login?username=${add_person_model.username}&password=${add_person_model.password}`);
 

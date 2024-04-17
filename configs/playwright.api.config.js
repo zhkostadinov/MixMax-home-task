@@ -1,6 +1,6 @@
 // @ts-check
 const { defineConfig } = require('@playwright/test');
-require('dotenv').config({ path: './.env.test' });
+require('dotenv').config({ path: '../.env.vault' });
 
 module.exports = defineConfig({
   timeout: 6 * 60 * 1000,
