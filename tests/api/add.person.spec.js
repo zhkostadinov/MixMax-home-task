@@ -15,7 +15,7 @@ test.beforeEach( async( {} )=> {
 
 });
 
-test.describe('API add person tests @api', () => {
+test.describe('API add person tests', {tag: '@api',}, () => {
     test('should response with status code 200 when add new person @api', async ({ request }) => {
         const postPersonRequest = await request.post('user', { data: add_person_model} );
         const responsePostRequest = await postPersonRequest.json();

@@ -16,7 +16,7 @@ test.beforeAll( async({ request })=> {
     await request.post('user', { data: add_person_model} );
 });
 
-test.describe('API delete person tests @api', () => {
+test.describe('API delete person tests', {tag: '@api',}, () => {
     
     test('should response with status code 404 when delete person by username', async ({ request }) => {
         await request.delete(`user/${add_person_model.username}`);
