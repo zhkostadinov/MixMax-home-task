@@ -14,10 +14,10 @@ jobs:
       with:
         node-version: 20
     - name: Set env vars
-      uses: thaind0/envfile@v1
-      with:
-        secrets: ${{ toJSON(secrets) }}
-        file: .env.vault       
+      run: |
+        echo STATIC_EMAIL=${{ env.STATIC_EMAIL }} > .env.vault
+        echo STATIC_PASSWORD=${{ env.STATIC_PASSWORD }} > .env.vault       
+        echo STATIC_USERNAME=${{ env.STATIC_USERNAME }} > .env.vault      
     - name: Cache node modules
       id: cache-npm
       uses: actions/cache@v4
