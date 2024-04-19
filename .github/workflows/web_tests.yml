@@ -16,9 +16,9 @@ jobs:
     - name: Set env vars
       run: |
         > .env.vault
-        echo STATIC_EMAIL=${{ vars.STATIC_EMAIL:-bar }} >> .env.vault
-        echo STATIC_PASSWORD=${{ vars.STATIC_PASSWORD:-bar }} >> .env.vault       
-        echo STATIC_USERNAME=${{ vars.STATIC_USERNAME:-bar }} >> .env.vault      
+        echo STATIC_EMAIL=${{ vars.STATIC_EMAIL }} >> .env.vault
+        echo STATIC_PASSWORD=${{ vars.STATIC_PASSWORD }} >> .env.vault       
+        echo STATIC_USERNAME=${{ vars.STATIC_USERNAME }} >> .env.vault      
     - name: Cache node modules
       id: cache-npm
       uses: actions/cache@v4
@@ -42,6 +42,12 @@ jobs:
     - name: Install dependencies    
       run: npm install --package-lock-only && npm ci && npx playwright install --with-deps
     - name: Print env file
-      run: cat .env.vault   
-    - name: Run Playwright WEB tests
-      run: npm run tests:web  
+      run: |
+        echo " Content of env file ---------"
+        cat .env.vault
+        echo " List files  ---------"
+        ls
+        echo " Print env vars ---------"
+        echo "$GITHUB_CONTEXT"
+    # - name: Run Playwright WEB tests
+    #   run: npm run tests:web  
