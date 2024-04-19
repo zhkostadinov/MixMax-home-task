@@ -46,8 +46,6 @@ jobs:
         echo " Content of env file ---------"
         cat .env.vault
         echo " List files  ---------"
-        ls
-        echo " Print env vars ---------"
-        echo "$GITHUB_CONTEXT"
+        ls -la
     # - name: Run Playwright WEB tests
     #   run: npm run tests:web  
