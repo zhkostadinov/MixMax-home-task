@@ -40,11 +40,11 @@ jobs:
         key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
     - name: Install dependencies    
       run: npm install --package-lock-only && npm ci && npx playwright install --with-deps
-    # - name: Print env file
-    #   run: |
-    #     echo " Content of env file ---------"
-    #     cat .env.vault
-    #     echo " List files  ---------"
-        # ls -la
-    # - name: Run Playwright WEB tests
-    #   run: npm run tests:web  
+    - name: Print env file
+      run: |
+        echo " List files  ---------"
+        ls -la
+        echo " Content of env file ---------"
+        cat .env.vault
+    - name: Run Playwright WEB tests
+      run: npm run tests:web  

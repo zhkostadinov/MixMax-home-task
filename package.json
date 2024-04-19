@@ -11,8 +11,8 @@
     "@types/node": "^20.10.5"
   },
   "scripts": {
-    "tests:api": "./node_modules/.bin/env-cmd -f ./.env.vault npx playwright test --config=./configs/playwright.api.config.js --workers=1 --retries=2 --grep @api --reporter=line",
+    "tests:api": "npx playwright test --config=./configs/playwright.api.config.js --workers=1 --retries=2 --grep @api --reporter=line",
     "tests:web": "./node_modules/.bin/env-cmd -f ./.env.vault npx playwright test --config=./configs/playwright.web.config.js --workers=1 --retries=2 --grep @web --reporter=line",
-    "tests:it": "./node_modules/.bin/env-cmd -f ./.env.vault npx playwright test --ui"
+    "tests:it": "npx playwright test --ui"
   }
 }

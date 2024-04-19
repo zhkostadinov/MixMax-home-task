@@ -10,4 +10,13 @@ vscode
 .package-lock.json
 package-lock.json
 
+./playwright-report
+.playwright-report
+playwright-report
+
+./test-results
+.test-results
+test-results
+
+
 .env.vault
