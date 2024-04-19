@@ -16,9 +16,9 @@ jobs:
     - name: Set env vars
       run: |
         > .env.vault
-        echo STATIC_EMAIL=${{ vars.STATIC_EMAIL }} >> .env.vault
-        echo STATIC_PASSWORD=${{ vars.STATIC_PASSWORD }} >> .env.vault       
-        echo STATIC_USERNAME=${{ vars.STATIC_USERNAME }} >> .env.vault      
+        echo STATIC_EMAIL=${{ vars.STATIC_EMAIL:-bar }} >> .env.vault
+        echo STATIC_PASSWORD=${{ vars.STATIC_PASSWORD:-bar }} >> .env.vault       
+        echo STATIC_USERNAME=${{ vars.STATIC_USERNAME:-bar }} >> .env.vault      
     - name: Cache node modules
       id: cache-npm
       uses: actions/cache@v4
